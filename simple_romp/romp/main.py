@@ -196,9 +196,9 @@ def main():
         cap = WebcamVideoStream(0)
         cap.start()
         while True:
-            frame = cap.read()
-            print(frame)
-            print(cap.read())
+            ret, frame = cap.stream.read()
+            if not ret:
+                break
             outputs = romp(frame)
         cap.stop()
 
