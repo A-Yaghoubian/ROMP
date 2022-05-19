@@ -114,9 +114,9 @@ class WebcamVideoStream(object):
         # initialize the video camera stream and read the first frame
         # from the stream
         try:
-            self.stream = cv2.VideoCapture(src)
-        except:
             self.stream = cv2.VideoCapture("/dev/video{}".format(src), cv2.CAP_V4L2)
+        except:
+            self.stream = cv2.VideoCapture(src)
         
         (self.grabbed, self.frame) = self.stream.read()
         # initialize the variable used to indicate if the thread should
