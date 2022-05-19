@@ -125,7 +125,8 @@ class WebcamVideoStream(object):
     
     def start(self):
         # start the thread to read frames from the video stream
-        Thread(target=self.update, args=()).start()
+        self.thread = Thread(target=self.update, args=())
+        self.thread.start()
         return self
     def update(self):
         # keep looping infinitely until the thread is stopped
@@ -135,6 +136,9 @@ class WebcamVideoStream(object):
                 return
             # otherwise, read the next frame from the stream
             (self.grabbed, self.frame) = self.stream.read()
+            print("frame readed")
+            print(self.frame)
+            
     def read(self):
         # return the frame most recently read
         return self.frame
