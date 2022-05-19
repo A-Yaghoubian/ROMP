@@ -197,6 +197,8 @@ def main():
         cap.start()
         while True:
             frame = cap.read()
+            print(frame)
+            print(cap.read())
             outputs = romp(frame)
         cap.stop()
 
